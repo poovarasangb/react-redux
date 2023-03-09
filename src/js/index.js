@@ -1,9 +1,10 @@
 import "scss/init.scss";
 
 import { createRoot } from 'react-dom/client';
-import React from 'react';
+import { Provider } from 'react-redux';
 
-import { App } from './app';
+import store from "./store/store";
+import { Counter } from "./components/counter";
 
 const mainElement = document.createElement('main');
 document.body.appendChild(mainElement);
@@ -11,7 +12,7 @@ document.title = 'React Redux - Study';
 
 const root = createRoot(mainElement);
 root.render(
-    <React.StrictMode>
-        <App/>
-    </React.StrictMode>
+    <Provider store={store}>
+        <Counter />
+    </Provider>
 );

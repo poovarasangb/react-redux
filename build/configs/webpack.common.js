@@ -1,20 +1,20 @@
-const path = require('path');
+const { resolve } = require('path');
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
 const isProduction = process.env.NODE_ENV === "production";
-const BASE_DIRECTORY = path.resolve('./');
 
 const {
-    entryFile, srcJsPath, portToListen, outputPath
+    entryFile, srcJsPath, portToListen, outputPath, srcCssPath,
+    srcImgPath
 } = require("../utils.js");
 
 module.exports = () => ({
     mode: 'development',
     entry: {
-        [entryFile]: path.join(BASE_DIRECTORY, './src/js/index.js')
+        [entryFile]: resolve(srcJsPath, "index.js")
     },
 
     output: {
@@ -28,8 +28,8 @@ module.exports = () => ({
     resolve: {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
         alias: {
-            js: path.resolve(path.resolve(__dirname, "../../src/js")),
-            scss: path.resolve(path.resolve(__dirname, "../../src/scss"))
+            js: srcJsPath,
+            scss: srcCssPath
         }
     },
 
@@ -47,7 +47,7 @@ module.exports = () => ({
 
     plugins: [
         new HtmlWebpackPlugin({
-            favicon: path.resolve(__dirname, "../../src/img/redux.svg")
+            favicon: resolve(srcImgPath, "redux.svg")
         }),
         new MiniCssExtractPlugin({}),
         new ESLintPlugin({

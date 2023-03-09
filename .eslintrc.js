@@ -1,4 +1,4 @@
-const path = require("path");
+const { resolve } = require("path");
 
 module.exports = {
     env: {
@@ -119,7 +119,7 @@ module.exports = {
         },
         "import/resolver": {
             webpack: {
-                config: path.resolve(__dirname, "./build/configs/webpack.common.js")
+                config: resolve(__dirname, "./build/configs/webpack.common.js")
             }
         }
     }
