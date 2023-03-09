@@ -6,7 +6,7 @@ import { selectCount } from '../store/slice/counterSlice';
 import { CounterSlice } from "../store/slice/counterSlice";
 
 const {
-    increment, decrement
+    increment, decrement, incrementByAmount
 } = CounterSlice.actions;
 
 export const Counter = () => {
@@ -19,6 +19,10 @@ export const Counter = () => {
         } else {
             dispatch(decrement());
         }
+    }, [dispatch]);
+
+    const handleDoubleButtonClick = useCallback(() => {
+        dispatch(incrementByAmount(2));
     }, [dispatch]);
 
     return (
@@ -40,6 +44,14 @@ export const Counter = () => {
                     onClick={handleClick}
                 >
           -
+                </button>
+                <button
+                    value="-"
+                    className="button"
+                    aria-label="Decrement value"
+                    onClick={handleDoubleButtonClick}
+                >
+                    {"double"}
                 </button>
             </div>
         </div>
