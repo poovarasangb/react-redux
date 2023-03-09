@@ -7,7 +7,7 @@ import { App } from './app';
 
 const mainElement = document.createElement('main');
 document.body.appendChild(mainElement);
-document.title = 'BookMyShow';
+document.title = 'React Redux - Study';
 
 const root = createRoot(mainElement);
 root.render(
