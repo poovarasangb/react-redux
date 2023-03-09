@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { CounterSlice } from "./slice/counterSlice";
+import { CounterSlice } from "js/store/slice/counterSlice.js";
 
 export default configureStore({
     reducer: {

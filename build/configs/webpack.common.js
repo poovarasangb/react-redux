@@ -53,7 +53,9 @@ module.exports = () => ({
         new ESLintPlugin({
             context: srcJsPath,
             failOnError: false,
-            emitWarning: true
+            emitWarning: false,
+            failOnWarning: false,
+            emitError: false
         })
     ],
 

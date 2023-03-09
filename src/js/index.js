@@ -4,7 +4,7 @@ import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 
 import store from "./store/store";
-import { Counter } from "./components/counter";
+import { Counter } from "js/components/counter";
 
 const mainElement = document.createElement('main');
 document.body.appendChild(mainElement);
