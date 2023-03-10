@@ -8,20 +8,30 @@ module.exports = {
     },
     extends: [
         "eslint:recommended",
-        'plugin:react/recommended'
+        'plugin:react/recommended',
+        "plugin:@typescript-eslint/eslint-recommended"
     ],
-    overrides: [
-    ],
+    overrides: [{
+        files: ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"]
+    }],
+    globals: {
+        Atomics: "readonly",
+        SharedArrayBuffer: "readonly"
+    },
+    parser: "@typescript-eslint/parser",
     parserOptions: {
-        ecmaVersion: 'latest',
-        sourceType: 'module'
+        ecmaFeatures: { jsx: true },
+        ecmaVersion: 2022,
+        sourceType: "module"
     },
     plugins: [
         'react',
         'react-hooks',
-        "import"
+        "import",
+        "@typescript-eslint"
     ],
     rules: {
+        "@typescript-eslint/semi": ["error", "always"],
         'react/react-in-jsx-scope': 0,
         'arrow-body-style': [2, 'as-needed'],
         'prefer-template': 2,
@@ -120,6 +130,9 @@ module.exports = {
         "import/resolver": {
             webpack: {
                 config: resolve(__dirname, "./build/configs/webpack.common.js")
+            },
+            node: {
+                extensions: [".js", ".jsx", ".ts", ".tsx"]
             }
         }
     }
